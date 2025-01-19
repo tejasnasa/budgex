@@ -26,8 +26,8 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <head />
-      <body>
-        <ThemeProvider themes={["light", "dark", "pink"]}>
+      <body suppressHydrationWarning>
+        <ThemeProvider themes={["light", "dark", "pink"]}  attribute="class">
           {children}
         </ThemeProvider>
       </body>

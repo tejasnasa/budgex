@@ -1,3 +1,10 @@
+import { logout } from "@/actions/auth";
+
 export default function Dashboard() {
-  return <div>DASHBOARD</div>;
+  return (
+    <div>
+      DASHBOARD
+      <button onClick={logout}>LOGOUT</button>
+    </div>
+  );
 }
