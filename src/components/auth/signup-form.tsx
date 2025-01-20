@@ -12,31 +12,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { signupFormSchema } from "@/lib/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-export const formSchema = z.object({
-  username: z
-    .string()
-    .min(2, { message: "Name must be at least 2 characters long." })
-    .trim(),
-  email: z.string().email({ message: "Please enter a valid email." }).trim(),
-  password: z
-    .string()
-    .min(8, { message: "Be at least 8 characters long" })
-    .regex(/[a-zA-Z]/, { message: "Contain at least one letter." })
-    .regex(/[0-9]/, { message: "Contain at least one number." })
-    .regex(/[^a-zA-Z0-9]/, {
-      message: "Contain at least one special character.",
-    })
-    .trim(),
-});
-
-export function SignupForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+export default function SignupForm() {
+  const form = useForm<z.infer<typeof signupFormSchema>>({
+    resolver: zodResolver(signupFormSchema),
     defaultValues: {
       username: "",
       email: "",
@@ -44,9 +28,9 @@ export function SignupForm() {
     },
   });
 
-  const [error, setError] = useState<string | null>(null); // State for error message
+  const [error, setError] = useState<string | null>(null);
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof signupFormSchema>) {
     try {
       if (!values.username || !values.email || !values.password) {
         throw new Error("All fields are required.");
@@ -55,7 +39,7 @@ export function SignupForm() {
       await signup(values);
     } catch (error: any) {
       console.error(error.message);
-      setError(error.message); // Display error in the form
+      setError(error.message);
     }
   }
 
@@ -113,11 +97,9 @@ export function SignupForm() {
             </FormItem>
           )}
         />
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-sm font-medium text-destructive">{error}</p>}
         <Button type="submit">Submit</Button>
       </form>
     </Form>
   );
 }
-
-export default SignupForm;

@@ -1,11 +1,9 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod";
 
-export const formSchema = z.object({
+export const signupFormSchema = z.object({
   username: z
     .string()
-    .min(2, { message: "Name must be at least 2 characters long." })
+    .min(4, { message: "Name must be at least 2 characters long." })
     .trim(),
   email: z.string().email({ message: "Please enter a valid email." }).trim(),
   password: z
@@ -19,20 +17,13 @@ export const formSchema = z.object({
     .trim(),
 });
 
-export function SignupForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-    },
-  });
-
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
-}
+export const loginFormSchema = z.object({
+  usernameOrEmail: z
+    .string()
+    .min(4, { message: "Please enter a valid username or email" })
+    .trim(),
+  password: z
+    .string()
+    .min(8, { message: "Please enter a valid password" })
+    .trim(),
+});
