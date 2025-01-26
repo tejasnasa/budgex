@@ -1,10 +1,5 @@
-import { ThemeChanger } from "@/components/theme-changer";
+import ComingSoon from "@/components/coming-soon";
 
 export default function Home() {
-  return (
-    <div>
-      HOME
-      <ThemeChanger />
-    </div>
-  );
+  return <ComingSoon />;
 }
