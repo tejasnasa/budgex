@@ -49,10 +49,10 @@ export default function Header() {
           </Link>
         </div>
         <div className={styles.icon}>
-          <Bell size={20} />
+          <Bell size={19} />
         </div>
         <Link href={"/profile"} className={styles.icon}>
-          <User size={20} />
+          <User size={19} />
         </Link>
       </section>
     </header>

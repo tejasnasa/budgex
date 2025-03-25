@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String                @id @default(uuid()) @unique
+  username        String                @unique
+  email           String                @unique
+  password        String
+  budget          Float                 @default(0)
+  expenses        Expense[]
+  incomes         Income[]
+  goals           Goal[]
+
+  @@map("users")           
+}
+
+model Expense {
+  id              String                @id @unique @default(uuid())
+  userid          String
+  user            User                  @relation(fields: [userid], references: [id])
+  name            String
+  amount          Float
+  date            DateTime
+  categoryid      String
+  category        Category              @relation(fields: [categoryid], references: [id])
+  notes           String?
+  created_at      DateTime              @default(now())
+
+  @@map("expenses")
+}
+
+model Income {
+  id         String   @id @unique @default(uuid())
+  userid     String
+  user       User     @relation(fields: [userid], references: [id])
+  source     String
+  amount     Float
+  date       DateTime
+  notes      String?
+  created_at DateTime @default(now())
+
+  @@map("income")
+}
+
+model Category {
+  id         String   @id @unique @default(uuid())
+  name       String   @unique
+  color      String?
+  created_at DateTime @default(now())
+  expenses   Expense[]
+}
+
+model Goal {
+  id         String   @id @unique @default(uuid())
+  userid     String
+  user       User     @relation(fields: [userid], references: [id])
+  name       String
+  target     Float
+  progress   Float    @default(0)
+  deadline   DateTime?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("goals")
+}
