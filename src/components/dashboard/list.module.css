@@ -1,0 +1,61 @@
+.graydiv {
+  height: 25px;
+  width: 100px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: gray;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.whitediv {
+  height: 16px;
+  width: 72%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.list {
+  overflow: scroll;
+  background-color: #303030;
+  color: #ededed;
+  border-radius: 40px;
+  padding: 10px;
+}
+
+.item {
+  display: flex;
+  margin: 10px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.namebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  margin: 2px;
+  margin-right: 10px;
+}
+
+.name {
+  font-size: 17px;
+}
+
+.time {
+  color: rgb(173, 172, 172);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.expense {
+  font-size: 20px;
+}

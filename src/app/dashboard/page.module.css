@@ -36,6 +36,7 @@
   width: 100%;
   min-height: 700px;
   margin-top: 40px;
+  margin-bottom: 40px;
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(2, 50%);
   gap: 4px;
@@ -48,37 +49,49 @@
 .block5,
 .block6 {
   display: grid;
-  background-color: white;
-  opacity: 50%;
+  background-color: rgb(255, 255, 255, 0.5);
   border-radius: 50px;
 }
 
 .block1 {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
+  aspect-ratio: 1;
 }
 
 .block2 {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
+  aspect-ratio: 1;
 }
 
 .block3 {
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
+  aspect-ratio: 1;
 }
 
 .block4 {
   grid-column: 4 / span 1;
   grid-row: 1 / span 2;
+  padding: 12px;
+  aspect-ratio: 0.5;
+}
+
+.heading4 {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 20px;
 }
 
 .block5 {
   grid-column: 1 / span 1;
   grid-row: 2 / span 1;
+  aspect-ratio: 1;
 }
 
-.block1 {
+.block6 {
   grid-column: 2 / span 2;
   grid-row: 2 / span 1;
+  aspect-ratio: 2;
 }

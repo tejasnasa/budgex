@@ -51,7 +51,7 @@ model Income {
 model Category {
   id         String   @id @unique @default(uuid())
   name       String   @unique
-  color      String?
+  color      String
   created_at DateTime @default(now())
   expenses   Expense[]
 }
