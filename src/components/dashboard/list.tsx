@@ -1,4 +1,4 @@
-import { formatDateTime, timeAgo } from "@/utils/datetime";
+import { formatDateTime} from "@/utils/datetime";
 import styles from "./list.module.css";
 import { Utensils } from "lucide-react";
 
@@ -16,7 +16,7 @@ interface ListProps {
       name: string;
       id: string;
       created_at: Date;
-      color: string;
+      color: string | null;
     };
   }[];
 }
