@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import logo from "@/assets/images/logo.png";
 import Link from "next/link";
 
-export default function page() {
+export default function Register() {
   return (
     <main className={styles.main}>
       <Image src={logo} alt="Budgex" height={56} className={styles.logo} />
@@ -12,8 +12,10 @@ export default function page() {
         <form action="">
           <input type="text" />
           <input type="text" />
+          <input type="text" />
+          <input type="text" />
           <button>Submit</button>
-          <Link href="/register">Login</Link>
+          <Link href="/register">Signup</Link>
         </form>
       </section>
     </main>

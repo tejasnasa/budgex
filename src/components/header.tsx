@@ -2,17 +2,17 @@
 
 import styles from "@/components/header.module.css";
 import { Bell, User } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import logo from "@/assets/images/logo.png";
 
 export default function Header() {
   const location = usePathname();
-  console.log(styles);
-  console.log("Current path:", location);
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.logo}>Budgex</h1>
+      <Image src={logo} alt="Budgex" height={56} className={styles.logo} />
       <section>
         <div className={styles.navbar}>
           <Link

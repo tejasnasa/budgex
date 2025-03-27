@@ -14,14 +14,8 @@
 }
 
 .logo {
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  font-size: 28px;
-  border: solid gray 2px;
   border-radius: 50px;
-  display: inline-block;
+  border: black solid 5px;
 }
 
 .navbar {

@@ -1,0 +1,11 @@
+.main {
+  min-height: 100dvh;
+  margin-left: 56px;
+  margin-right: 56px;
+  margin-top: 20px;
+}
+
+.logo {
+  border-radius: 50px;
+  border: black solid 5px;
+}

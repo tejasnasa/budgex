@@ -1,4 +1,4 @@
-import styles from "@/app/dashboard/page.module.css";
+import styles from "./page.module.css";
 import Header from "@/components/header";
 import { Landmark } from "lucide-react";
 
