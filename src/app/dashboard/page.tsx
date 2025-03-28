@@ -5,7 +5,7 @@ import { prisma } from "@/utils/prisma";
 import { Landmark } from "lucide-react";
 import WeekGraph from "@/components/dashboard/weekgraph";
 import MonthGraph from "@/components/dashboard/monthgraph";
-import MonthPie from "@/components/dashboard/monthpie";
+import MonthPie from "@/components/dashboard/weekpie";
 
 export default async function Dashboard() {
   const data = await prisma.expense.findMany({
@@ -44,7 +44,9 @@ export default async function Dashboard() {
           </div>
           <div className={styles.block5}>Add income</div>
           <div className={styles.block6}>
-            <span className={styles.heading4}>Monthly Distribution</span>
+            <span className={styles.heading1}>
+              Monthly Distribution <span>Spent: ₹5020</span>
+            </span>
             <MonthGraph data={data} />
           </div>
         </section>

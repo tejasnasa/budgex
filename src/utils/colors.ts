@@ -1,5 +1,5 @@
 export function getColor(category: string) {
-  const colors = ["#000", "#ffc658", "#898989", "#c8c7c7"];
+  const colors = ["#000", "#ffc658", "#898989", "#ff0000"];
   console.log(category);
   if (category === "Food") {
     return colors[0];

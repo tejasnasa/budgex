@@ -64,6 +64,15 @@
   font-weight: 500;
   margin: 30px;
   margin-bottom: 10px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.heading1 span {
+  font-size: 18px;
+  color: rgb(28, 27, 27);
+  font-weight: 400;
+  padding-right: 20px;
 }
 
 .block2 {
@@ -81,7 +90,7 @@
 .block4 {
   grid-column: 4 / span 1;
   grid-row: 1 / span 2;
-  padding: 12px;
+  padding: 10px;
   aspect-ratio: 0.5;
 }
 

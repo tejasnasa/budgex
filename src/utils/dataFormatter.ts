@@ -1,7 +1,7 @@
 import { getColor } from "./colors";
-import { DataProps, PieChartData } from "./types";
+import { ExpenseType, PieChartData } from "./types";
 
-export function formatBarData(data: DataProps["data"]) {
+export function formatWeekBarData(data: ExpenseType[]) {
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 
@@ -43,7 +43,7 @@ export function formatBarData(data: DataProps["data"]) {
   return last7Days.map(({ date }) => groupedData[date]);
 }
 
-export function formatPieChartData(data: DataProps["data"]): PieChartData[] {
+export function formatPieChartData(data: ExpenseType[]): PieChartData[] {
   const categoryTotals: Record<string, number> = {};
 
   data.forEach(({ amount, category }) => {
@@ -58,4 +58,46 @@ export function formatPieChartData(data: DataProps["data"]): PieChartData[] {
     value,
     color: getColor(name),
   }));
+}
+
+export function formatMonthAreaData(data: ExpenseType[]) {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+
+  const lastDay = new Date(year, month + 1, 0).getDate();
+
+  interface DayExpense {
+    name: string;
+    [category: string]: string | number;
+  }
+
+  const monthDates = [...Array(lastDay)].map((_, i) => {
+    const date = new Date(year, month, i + 1);
+    return {
+      date: date.toISOString().split("T")[0],
+      dayName: (i + 1).toString(),
+    };
+  });
+
+  const groupedData: Record<string, DayExpense> = {};
+
+  monthDates.forEach(({ date, dayName }) => {
+    groupedData[date] = { name: dayName };
+  });
+
+  data.forEach(({ amount, date, category }) => {
+    const parsedDate = new Date(date);
+    parsedDate.setUTCHours(0, 0, 0, 0);
+    const formattedDate = parsedDate.toISOString().split("T")[0];
+
+    if (groupedData[formattedDate]) {
+      if (typeof groupedData[formattedDate][category.name] !== "number") {
+        groupedData[formattedDate][category.name] = 0;
+      }
+      (groupedData[formattedDate][category.name] as number) += amount;
+    }
+  });
+
+  return monthDates.map(({ date }) => groupedData[date]);
 }

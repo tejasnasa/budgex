@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { DataProps } from "@/utils/types";
 import { Cell, Pie, PieChart, ResponsiveContainer, PieProps } from "recharts";
 import { formatPieChartData } from "@/utils/dataFormatter";
-import { renderActiveShape } from "./monthpiehelper";
+import { renderActiveShape } from "./weekpiehelper";
+import { ExpenseType } from "@/utils/types";
 
-export default function CategoryPieChart({ data }: DataProps) {
+export default function CategoryPieChart({ data }: { data: ExpenseType[] }) {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const formattedData = formatPieChartData(data);
 

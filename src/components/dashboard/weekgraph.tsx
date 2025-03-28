@@ -2,11 +2,11 @@
 
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import { getColor } from "@/utils/colors";
-import { formatBarData } from "@/utils/dataFormatter";
-import { DataProps } from "@/utils/types";
+import { formatWeekBarData } from "@/utils/dataFormatter";
+import { ExpenseType } from "@/utils/types";
 
-export default function WeekGraph({ data }: DataProps) {
-  const formattedData = formatBarData(data);
+export default function WeekGraph({ data }: { data: ExpenseType[] }) {
+  const formattedData = formatWeekBarData(data);
 
   const categories = Array.from(
     new Set(
@@ -31,6 +31,7 @@ export default function WeekGraph({ data }: DataProps) {
         />
         <Tooltip
           labelFormatter={() => ""}
+          formatter={(value) => `₹ ${value}`}
           contentStyle={{
             backgroundColor: "#fff",
             borderRadius: "10px",
