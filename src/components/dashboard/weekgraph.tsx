@@ -1,65 +1,51 @@
 "use client";
 
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Legend,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
+import styles from "./weekgraph.module.css";
+import { getColor } from "@/utils/colors";
+import { formatData } from "@/utils/dataFormatter";
+import { DataProps } from "@/utils/types";
 
-const data = [
-  {
-    name: "Monday",
-    uv: 0,
-    pv: 240,
-  },
-  {
-    name: "Tuesday",
-    uv: 50,
-    pv: 0,
-  },
-  {
-    name: "Page C",
-    uv: 500,
-    pv: 800,
-  },
-  {
-    name: "Page D",
-    uv: 780,
-    pv: 908,
-  },
-  {
-    name: "Page E",
-    uv: 0,
-    pv: 0,
-  },
-  {
-    name: "Page F",
-    uv: 0,
-    pv: 0,
-  },
-  {
-    name: "Page G",
-    uv: 390,
-    pv: 300,
-  },
-];
+export default function WeekGraph({ data }: DataProps) {
+  const formattedData = formatData(data);
 
-export default function WeekGraph() {
+  const categories = Array.from(
+    new Set(
+      formattedData.flatMap((day) =>
+        Object.keys(day).filter((key) => key !== "name")
+      )
+    )
+  );
+
   return (
-    <ResponsiveContainer>
-      <BarChart data={data} margin={{top: 20}}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="pv" stackId="pv" fill="#8884d8" />
-        <Bar dataKey="uv" stackId="pv" fill="#82ca9d" />
+    <ResponsiveContainer width="100%" className={styles.container}>
+      <BarChart
+        data={formattedData}
+        margin={{ top: 0, bottom: 10, right: 20, left: 20 }}
+        barSize={12}
+      >
+        <XAxis
+          dataKey="name"
+          axisLine={false}
+          tickLine={false}
+          tick={{ fill: "#000" }}
+        />
+        <Tooltip
+          labelFormatter={() => ""}
+          contentStyle={{
+            backgroundColor: "#fff",
+            borderRadius: "10px",
+            border: "none",
+          }}
+        />
+        {categories.map((category) => (
+          <Bar
+            key={category}
+            dataKey={category}
+            stackId="expenses"
+            fill={getColor(category)}
+          />
+        ))}
       </BarChart>
     </ResponsiveContainer>
   );

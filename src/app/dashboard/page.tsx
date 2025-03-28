@@ -30,13 +30,13 @@ export default async function Dashboard() {
 
         <section className={styles.grid}>
           <div className={styles.block1}>
-            <span className={styles.heading4}>Weekly Expenses</span>
-            <WeekGraph />
+            <span className={styles.heading1}>Weekly Expenses</span>
+              <WeekGraph data={data} />
           </div>
           <div className={styles.block2}></div>
           <div className={styles.block3}>
-            <span className={styles.heading4}>Weekly Distribution</span>
-            <MonthPie />
+            <span className={styles.heading1}>Weekly Distribution</span>
+            <MonthPie data={data} />
           </div>
           <div className={styles.block4}>
             <span className={styles.heading4}>Expenses</span>
@@ -45,7 +45,7 @@ export default async function Dashboard() {
           <div className={styles.block5}>Add income</div>
           <div className={styles.block6}>
             <span className={styles.heading4}>Monthly Distribution</span>
-            <MonthGraph />
+            <MonthGraph data={data} />
           </div>
         </section>
       </main>

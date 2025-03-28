@@ -29,43 +29,41 @@ model Expense {
   date            DateTime
   categoryid      String
   category        Category              @relation(fields: [categoryid], references: [id])
-  notes           String?
   created_at      DateTime              @default(now())
 
   @@map("expenses")
 }
 
 model Income {
-  id         String   @id @unique @default(uuid())
+  id         String                     @id @unique @default(uuid())
   userid     String
-  user       User     @relation(fields: [userid], references: [id])
+  user       User                       @relation(fields: [userid], references: [id])
   source     String
   amount     Float
   date       DateTime
   notes      String?
-  created_at DateTime @default(now())
+  created_at DateTime                   @default(now())
 
   @@map("income")
 }
 
 model Category {
-  id         String   @id @unique @default(uuid())
-  name       String   @unique
-  color      String
-  created_at DateTime @default(now())
+  id         String                     @id @unique @default(uuid())
+  name       String                     @unique
+  created_at DateTime                   @default(now())
   expenses   Expense[]
 }
 
 model Goal {
-  id         String   @id @unique @default(uuid())
+  id         String                     @id @unique @default(uuid())
   userid     String
-  user       User     @relation(fields: [userid], references: [id])
+  user       User                       @relation(fields: [userid], references: [id])
   name       String
   target     Float
-  progress   Float    @default(0)
+  progress   Float                      @default(0)
   deadline   DateTime?
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  created_at DateTime                   @default(now())
+  updated_at DateTime                   @updatedAt
 
   @@map("goals")
 }
