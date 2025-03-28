@@ -1,13 +1,12 @@
 "use client";
 
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
-import styles from "./weekgraph.module.css";
 import { getColor } from "@/utils/colors";
-import { formatData } from "@/utils/dataFormatter";
+import { formatBarData } from "@/utils/dataFormatter";
 import { DataProps } from "@/utils/types";
 
 export default function WeekGraph({ data }: DataProps) {
-  const formattedData = formatData(data);
+  const formattedData = formatBarData(data);
 
   const categories = Array.from(
     new Set(
@@ -18,7 +17,7 @@ export default function WeekGraph({ data }: DataProps) {
   );
 
   return (
-    <ResponsiveContainer width="100%" className={styles.container}>
+    <ResponsiveContainer width="100%">
       <BarChart
         data={formattedData}
         margin={{ top: 0, bottom: 10, right: 20, left: 20 }}

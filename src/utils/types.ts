@@ -11,7 +11,26 @@ export interface DataProps {
       name: string;
       id: string;
       created_at: Date;
-      color: string | null;
     };
   }[];
+}
+
+export interface PieChartData {
+  name: string;
+  value: number;
+  color: string;
+}
+
+export interface ActiveShapeProps {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  startAngle: number;
+  endAngle: number;
+  fill: string;
+  payload: PieChartData;
+  percent: number;
+  value: number;
 }

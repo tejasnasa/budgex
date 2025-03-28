@@ -22,6 +22,7 @@
 .list {
   overflow: scroll;
   background-color: #303030;
+  border-color: #d2aaeb;
   color: #ededed;
   border-radius: 40px;
   padding: 10px;

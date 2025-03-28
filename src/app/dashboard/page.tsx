@@ -31,7 +31,7 @@ export default async function Dashboard() {
         <section className={styles.grid}>
           <div className={styles.block1}>
             <span className={styles.heading1}>Weekly Expenses</span>
-              <WeekGraph data={data} />
+            <WeekGraph data={data} />
           </div>
           <div className={styles.block2}></div>
           <div className={styles.block3}>

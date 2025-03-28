@@ -1,47 +1,37 @@
 "use client";
 
-import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import { useState } from "react";
+import { DataProps } from "@/utils/types";
+import { Cell, Pie, PieChart, ResponsiveContainer, PieProps } from "recharts";
+import { formatPieChartData } from "@/utils/dataFormatter";
+import { renderActiveShape } from "./monthpiehelper";
 
-const data01 = [
-  {
-    name: "Group A",
-    value: 400,
-  },
-  {
-    name: "Group B",
-    value: 300,
-  },
-  {
-    name: "Group C",
-    value: 300,
-  },
-  {
-    name: "Group D",
-    value: 200,
-  },
-  {
-    name: "Group E",
-    value: 278,
-  },
-  {
-    name: "Group F",
-    value: 189,
-  },
-];
+export default function CategoryPieChart({ data }: DataProps) {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const formattedData = formatPieChartData(data);
 
-export default function MonthPie() {
+  const onPieEnter = (_: PieProps, index: number) => {
+    setActiveIndex(index);
+  };
+
   return (
     <ResponsiveContainer>
       <PieChart>
         <Pie
-          data={data01}
-          dataKey="value"
-          nameKey="name"
+          activeIndex={activeIndex}
+          activeShape={renderActiveShape}
+          data={formattedData}
           cx="50%"
           cy="50%"
-          fill="#8884d8"
-        />
-        <Tooltip/>
+          innerRadius={50}
+          outerRadius={80}
+          dataKey="value"
+          onMouseEnter={onPieEnter}
+        >
+          {formattedData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={entry.color} />
+          ))}
+        </Pie>
       </PieChart>
     </ResponsiveContainer>
   );

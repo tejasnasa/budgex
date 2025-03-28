@@ -1,6 +1,7 @@
-import { DataProps } from "./types";
+import { getColor } from "./colors";
+import { DataProps, PieChartData } from "./types";
 
-export function formatData(data: DataProps["data"]) {
+export function formatBarData(data: DataProps["data"]) {
   const today = new Date();
   today.setUTCHours(0, 0, 0, 0);
 
@@ -20,7 +21,6 @@ export function formatData(data: DataProps["data"]) {
     };
   });
 
-  // Initialize grouped data
   const groupedData: Record<string, DayExpense> = {};
 
   last7Days.forEach(({ date, dayName }) => {
@@ -41,4 +41,21 @@ export function formatData(data: DataProps["data"]) {
   });
 
   return last7Days.map(({ date }) => groupedData[date]);
+}
+
+export function formatPieChartData(data: DataProps["data"]): PieChartData[] {
+  const categoryTotals: Record<string, number> = {};
+
+  data.forEach(({ amount, category }) => {
+    if (!categoryTotals[category.name]) {
+      categoryTotals[category.name] = 0;
+    }
+    categoryTotals[category.name] += amount;
+  });
+
+  return Object.entries(categoryTotals).map(([name, value]) => ({
+    name,
+    value,
+    color: getColor(name),
+  }));
 }

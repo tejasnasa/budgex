@@ -1,26 +1,9 @@
 import { formatDateTime } from "@/utils/datetime";
 import styles from "./list.module.css";
 import { Utensils } from "lucide-react";
+import { DataProps } from "@/utils/types";
 
-interface ListProps {
-  data: {
-    name: string;
-    id: string;
-    userid: string;
-    amount: number;
-    date: Date;
-    categoryid: string;
-    created_at: Date;
-    category: {
-      name: string;
-      id: string;
-      created_at: Date;
-      color: string | null;
-    };
-  }[];
-}
-
-export default function List({ data }: ListProps) {
+export default function List({ data }: DataProps) {
   return (
     <>
       <div className={styles.whitediv}></div>
