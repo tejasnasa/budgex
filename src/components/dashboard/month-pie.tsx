@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, PieProps } from "recharts";
 import { formatPieChartData } from "@/utils/dataFormatter";
-import { renderActiveShape } from "./weekpiehelper";
+import { renderActiveShape } from "./month-pie-helper";
 import { ExpenseType } from "@/utils/types";
 
 export default function CategoryPieChart({ data }: { data: ExpenseType[] }) {
