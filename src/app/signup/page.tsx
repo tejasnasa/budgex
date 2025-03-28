@@ -9,6 +9,7 @@ import { signupSchema } from "@/utils/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import SignupForm from "@/components/signupform";
+import { signup } from "@/actions/auth";
 
 export default function Signup() {
   const [responseError, setResponseError] = useState<string | null>(null);

@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/images/logo.png";
+import { logout } from "@/actions/auth";
 
 export default function Header() {
   const location = usePathname();
@@ -48,7 +49,7 @@ export default function Header() {
             History
           </Link>
         </div>
-        <div className={styles.icon}>
+        <div className={styles.icon} onClick={logout}>
           <Bell size={19} />
         </div>
         <Link href={"/profile"} className={styles.icon}>

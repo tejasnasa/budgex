@@ -9,6 +9,7 @@ import { z } from "zod";
 import { loginSchema } from "@/utils/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoginForm from "@/components/loginform";
+import { login } from "@/actions/auth";
 
 export default function Login() {
   const [responseError, setResponseError] = useState<string | null>(null);
@@ -18,8 +19,19 @@ export default function Login() {
     defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = (/*values: z.infer<typeof loginSchema>*/) => {
-    // mutate(values);
+  const onSubmit = async (values: z.infer<typeof loginSchema>) => {
+    try {
+      if (!values.email || !values.password) {
+        throw new Error("All fields are required.");
+      }
+
+      await login(values);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+        setResponseError(error.message);
+      }
+    }
   };
 
   return (
