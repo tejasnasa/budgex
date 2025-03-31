@@ -6,10 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/images/logo.png";
-import { logout } from "@/actions/auth";
+import Options from "@/components/options";
+import { useState } from "react";
 
-export default function Header() {
+export default function Header({ name }: { name: string | undefined }) {
   const location = usePathname();
+  const [showOptions, setShowOptions] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -49,12 +51,18 @@ export default function Header() {
             History
           </Link>
         </div>
-        <div className={styles.icon} onClick={logout}>
+        <div className={styles.icon}>
           <Bell size={19} />
         </div>
-        <Link href={"/profile"} className={styles.icon}>
-          <User size={19} />
-        </Link>
+        <div>
+          <button
+            className={styles.icon}
+            onClick={() => setShowOptions((val) => !val)}
+          >
+            <User size={19} />
+          </button>
+          <Options showOptions={showOptions} name={name} />
+        </div>
       </section>
     </header>
   );

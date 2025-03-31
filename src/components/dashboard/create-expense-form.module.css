@@ -31,6 +31,8 @@
   border-radius: 7px;
   padding: 4px;
   width: 90%;
+  font-family: inherit;
+  font-weight: 500;
 }
 
 .button {
@@ -41,4 +43,5 @@
   margin: 5px;
   width: 120px;
   font-size: 13px;
+  font-family: inherit;
 }

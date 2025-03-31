@@ -33,7 +33,7 @@ export default async function Dashboard() {
 
   return (
     <>
-      <Header />
+      <Header name={userData?.username} />
       <main className={styles.main}>
         <section className={styles.title}>
           <h2>Dashboard</h2>

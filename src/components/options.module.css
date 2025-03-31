@@ -1,0 +1,27 @@
+.box,
+.hidden {
+  height: 200px;
+  width: 180px;
+  background-color: #f8f2e3;
+  padding: 20px;
+  position: absolute;
+  right: 30;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  border: solid 1px #303030;
+}
+
+.button {
+  background-color: gray;
+  border: none;
+  padding: 5px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.hidden {
+  display: none;
+}
