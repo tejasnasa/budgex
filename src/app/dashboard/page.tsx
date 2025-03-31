@@ -8,14 +8,26 @@ import MonthGraph from "@/components/dashboard/month-graph";
 import MonthPie from "@/components/dashboard/month-pie";
 import CreateExpenseForm from "@/components/dashboard/create-expense-form";
 import CreateIncomeForm from "@/components/dashboard/create-income-form";
+import { cookies } from "next/headers";
+import { decrypt } from "@/utils/sessions";
 
 export default async function Dashboard() {
+  const cookie = (await cookies()).get("session")?.value;
+  const session = (await decrypt(cookie)) as { userId?: string };
+
   const data = await prisma.expense.findMany({
+    where: { userid: session.userId },
     include: {
       category: true,
     },
     orderBy: {
       date: "desc",
+    },
+  });
+
+  const userData = await prisma.user.findUnique({
+    where: {
+      id: session.userId,
     },
   });
 
@@ -29,7 +41,7 @@ export default async function Dashboard() {
             <div className={styles.budget_label}>
               <Landmark strokeWidth={1} size={28} /> Budget
             </div>
-            <div className={styles.budget_value}>₹ 3204</div>
+            <div className={styles.budget_value}>₹ {userData?.budget}</div>
           </div>
         </section>
 

@@ -30,12 +30,12 @@ export const formatDateTime = (date: Date) => {
   };
   const dateStr = date.toLocaleString("en-US", dateOptions);
 
-  const timeOptions: Intl.DateTimeFormatOptions = {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  };
-  const timeStr = date.toLocaleString("en-US", timeOptions);
+  // const timeOptions: Intl.DateTimeFormatOptions = {
+  //   hour: "numeric",
+  //   minute: "2-digit",
+  //   hour12: true,
+  // };
+  // const timeStr = date.toLocaleString("en-US", timeOptions);
 
-  return `${dateStr} · ${timeStr}`;
+  return `${dateStr}`;
 };

@@ -46,7 +46,16 @@ export function formatWeekBarData(data: ExpenseType[]) {
 export function formatPieChartData(data: ExpenseType[]): PieChartData[] {
   const categoryTotals: Record<string, number> = {};
 
-  data.forEach(({ amount, category }) => {
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  sevenDaysAgo.setUTCHours(0, 0, 0, 0);
+
+  const recentData = data.filter(({ date }) => {
+    const expenseDate = new Date(date);
+    return expenseDate >= sevenDaysAgo;
+  });
+
+  recentData.forEach(({ amount, category }) => {
     if (!categoryTotals[category.name]) {
       categoryTotals[category.name] = 0;
     }

@@ -92,6 +92,9 @@
   grid-row: 1 / span 2;
   padding: 10px;
   aspect-ratio: 0.5;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 }
 
 .heading4 {

@@ -25,7 +25,9 @@
   border-color: #d2aaeb;
   color: #ededed;
   border-radius: 40px;
+  padding-right: 30px;
   padding: 10px;
+  height: min-content;
 }
 
 .item {
@@ -44,7 +46,7 @@
 
 .icon {
   margin: 2px;
-  margin-right: 10px;
+  margin-right: 16px;
 }
 
 .name {

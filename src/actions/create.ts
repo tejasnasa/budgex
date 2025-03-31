@@ -47,6 +47,15 @@ export async function createExpense(values: {
       },
     });
 
+    await prisma.user.update({
+      where: { id: session.userId },
+      data: {
+        budget: {
+          decrement: values.amount,
+        },
+      },
+    });
+
     revalidatePath("/dashboard");
   } catch (error) {
     console.error("Failed to create expense:", error);
