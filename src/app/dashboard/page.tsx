@@ -14,6 +14,9 @@ export default async function Dashboard() {
     include: {
       category: true,
     },
+    orderBy: {
+      date: "desc",
+    },
   });
 
   return (

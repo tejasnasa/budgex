@@ -50,6 +50,7 @@ export const signup = async function (values: z.infer<typeof signupSchema>) {
 
 export const login = async (values: z.infer<typeof loginSchema>) => {
   const { email, password } = values;
+  console.log(values);
 
   try {
     const user = await prisma.user.findFirst({
@@ -67,9 +68,11 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
     }
 
     await createSession(user.id);
+
+    redirect("/dashboard");
   } catch (error: unknown) {
     if (error instanceof Error) {
-      if (error.message === "Email or username doesn't exist.") {
+      if (error.message === "Email doesn't exist.") {
         throw new Error("Email or username doesn't exist. Please try again.");
       }
 
@@ -82,8 +85,6 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
     }
 
     throw new Error("An unknown error occurred.");
-  } finally {
-    redirect("/dashboard");
   }
 };
 
