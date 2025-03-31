@@ -32,3 +32,16 @@ export interface ActiveShapeProps {
   percent: number;
   value: number;
 }
+
+export interface ExpenseFormData {
+  name: string;
+  amount: number;
+  date: string;
+  category: string;
+}
+
+export interface IncomeFormData {
+  name: string;
+  amount: number;
+  date: string;
+}

@@ -3,13 +3,7 @@
 import { useForm } from "react-hook-form";
 import styles from "./create-expense-form.module.css";
 import { createExpense } from "@/actions/create";
-
-type FormData = {
-  name: string;
-  amount: number;
-  date: string;
-  category: string;
-};
+import { ExpenseFormData } from "@/utils/types";
 
 export default function CreateExpenseForm() {
   const {
@@ -17,9 +11,9 @@ export default function CreateExpenseForm() {
     handleSubmit,
     formState: { isSubmitting },
     reset,
-  } = useForm<FormData>();
+  } = useForm<ExpenseFormData>();
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: ExpenseFormData) => {
     await createExpense(data);
     reset();
   };

@@ -62,3 +62,46 @@ export async function createExpense(values: {
     throw new Error("Error creating expense");
   }
 }
+
+export async function createIncome(values: {
+  name: string;
+  amount: number;
+  date: string;
+}) {
+  const cookie = (await cookies()).get("session")?.value;
+  const session = (await decrypt(cookie)) as { userId?: string };
+
+  if (!session?.userId) {
+    throw new Error("Unauthorized: User not logged in");
+  }
+
+  const parsedDate = new Date(values.date);
+  if (isNaN(parsedDate.getTime())) {
+    throw new Error("Invalid date format");
+  }
+
+  try {
+    await prisma.income.create({
+      data: {
+        source: values.name,
+        amount: values.amount,
+        userid: session.userId,
+        date: parsedDate,
+      },
+    });
+
+    await prisma.user.update({
+      where: { id: session.userId },
+      data: {
+        budget: {
+          increment: values.amount,
+        },
+      },
+    });
+
+    revalidatePath("/dashboard");
+  } catch (error) {
+    console.error("Failed to create income:", error);
+    throw new Error("Error creating income");
+  }
+}
