@@ -10,6 +10,7 @@ import { loginSchema } from "@/utils/definitions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoginForm from "@/components/loginform";
 import { login } from "@/actions/auth";
+import Link from "next/link";
 
 export default function Login() {
   const [responseError, setResponseError] = useState<string | null>(null);
@@ -36,7 +37,10 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
-      <Image src={logo} alt="Budgex" height={56} className={styles.logo} />
+      <Link href="/">
+        <Image src={logo} alt="Budgex" height={56} className={styles.logo} />
+      </Link>
+
       <section className={styles.box}>
         <h1 className={styles.heading}>Login</h1>
         <LoginForm

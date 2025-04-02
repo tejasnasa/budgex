@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import SignupForm from "@/components/signupform";
 import { signup } from "@/actions/auth";
+import Link from "next/link";
 
 export default function Signup() {
   const [responseError, setResponseError] = useState<string | null>(null);
@@ -36,7 +37,9 @@ export default function Signup() {
 
   return (
     <main className={styles.main}>
-      <Image src={logo} alt="Budgex" height={56} className={styles.logo} />
+      <Link href="/">
+        <Image src={logo} alt="Budgex" height={56} className={styles.logo} />
+      </Link>
       <section className={styles.box}>
         <h1 className={styles.heading}>Signup</h1>
         <SignupForm

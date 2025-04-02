@@ -34,7 +34,9 @@ export default function SignupForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email" className={styles.label}>
+        Email
+      </label>
       <input
         type="text"
         className={styles.input}
@@ -42,7 +44,9 @@ export default function SignupForm({
         {...register("email")}
         placeholder="tejas@example.com"
       />
-      <label htmlFor="username">Email</label>
+      <label htmlFor="username" className={styles.label}>
+        Username
+      </label>
       <input
         type="text"
         className={styles.input}
@@ -50,19 +54,23 @@ export default function SignupForm({
         {...register("username")}
         placeholder="tejasnasa"
       />
-      <label htmlFor="password">Password</label>
-      <input
-        className={styles.input}
-        id="password"
-        {...register("password")}
-        type={showPassword ? "text" : "password"}
-      />
-      <Eye
-        onClick={() => setShowPassword((val) => !val)}
-        className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-      />
+      <label htmlFor="password" className={styles.label}>
+        Password
+      </label>
+      <div className={styles.password}>
+        <input
+          className={styles.input}
+          id="password"
+          {...register("password")}
+          type={showPassword ? "text" : "password"}
+        />
+        <Eye
+          onClick={() => setShowPassword((val) => !val)}
+          className={styles.eye}
+        />
+      </div>
       <button className={styles.submit}>Submit</button>
-      <div>
+      <div className={styles.error}>
         {errors.email ? (
           <p>{errors.email.message}</p>
         ) : errors.password ? (

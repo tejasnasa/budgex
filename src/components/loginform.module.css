@@ -32,3 +32,24 @@
   color: rgba(251, 231, 176, 1);
   border-radius: 10px;
 }
+
+.label {
+  color: #000;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+.password {
+  position: relative;
+}
+
+.eye {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-70%);
+}
+
+.error {
+  color: red;
+}
