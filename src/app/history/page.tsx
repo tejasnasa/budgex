@@ -3,6 +3,7 @@ import { prisma } from "@/utils/prisma";
 import { decrypt } from "@/utils/sessions";
 import { cookies } from "next/headers";
 import styles from "./page.module.css";
+import ComingSoon from "@/components/coming-soon";
 
 export default async function History() {
   const cookie = (await cookies()).get("session")?.value;
@@ -20,7 +21,9 @@ export default async function History() {
   return (
     <>
       <Header name={userData?.username} />
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <ComingSoon />
+      </main>
     </>
   );
 }

@@ -1,0 +1,30 @@
+.section {
+  background-color: #303030;
+  color: white;
+  text-align: center;
+  padding-left: auto;
+  padding-right: auto;
+  margin-left: 30%;
+  margin-right: 30%;
+  font-size: 100px;
+  padding: 100px;
+  margin-top: 100px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  font-size: 20px;
+  margin-top: 40px;
+  background-color: gray;
+  padding: 10px;
+  border-radius: 50px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.link:hover {
+background-color: rgb(136, 136, 136);
+}
