@@ -49,3 +49,10 @@
   font-size: 13px;
   font-family: inherit;
 }
+
+.button:hover {
+  background-color: #6f6c6c;
+  cursor: pointer;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}

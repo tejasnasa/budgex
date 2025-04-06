@@ -2,12 +2,41 @@
   min-height: 100dvh;
   margin-left: 56px;
   margin-right: 56px;
-  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
   border-radius: 50px;
   border: black solid 5px;
+}
+
+.signup,
+.login {
+  font-size: 20px;
+  padding: 12px;
+  margin-right: 10px;
+}
+
+.signup {
+  background-color: black;
+  color: #ECE6D3;
+  border-radius: 10px;
+}
+
+.signup:hover {
+  background-color: rgb(35, 35, 35);  
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.login {
+  font-weight: 500;
 }
 
 .heading {

@@ -22,7 +22,7 @@
 }
 
 .input {
-  background-color: #F7F2E4;
+  background-color: #f7f2e4;
   outline: none;
   border: none;
   margin: 4px;
@@ -35,6 +35,10 @@
   font-weight: 500;
 }
 
+.option {
+  font-family: var(--quicksand);
+}
+
 .button {
   background-color: #f8d45d;
   border-radius: 4px;
@@ -44,4 +48,11 @@
   width: 120px;
   font-size: 13px;
   font-family: inherit;
+}
+
+.button:hover {
+  background-color: #edc338;
+  cursor: pointer;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }

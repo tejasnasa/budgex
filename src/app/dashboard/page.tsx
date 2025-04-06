@@ -66,7 +66,10 @@ export default async function Dashboard() {
           </div>
           <div className={styles.block6}>
             <span className={styles.heading1}>
-              Monthly Distribution <span>Spent: ₹5020</span>
+              Monthly Distribution{" "}
+              <span>
+                Spent: ₹{data.reduce((sum, expense) => sum + expense.amount, 0)}
+              </span>
             </span>
             <MonthGraph data={data} />
           </div>

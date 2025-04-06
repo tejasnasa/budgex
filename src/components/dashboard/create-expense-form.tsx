@@ -42,10 +42,18 @@ export default function CreateExpenseForm() {
         <input className={styles.input} type="date" {...register("date")} />
 
         <select className={styles.input} {...register("category")}>
-          <option value="Misc">Miscellanous</option>
-          <option value="Food">Food</option>
-          <option value="Transport">Transport</option>
-          <option value="Movies">Movies</option>
+          <option value="Misc" className={styles.option}>
+            Miscellanous
+          </option>
+          <option value="Food" className={styles.option}>
+            Food
+          </option>
+          <option value="Transport" className={styles.option}>
+            Transport
+          </option>
+          <option value="Movies" className={styles.option}>
+            Movies
+          </option>
         </select>
 
         <button className={styles.button} type="submit">

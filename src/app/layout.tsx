@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "./globals.css";
+import TopLoader from "@/components/top-loader";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
+  variable: "--quicksand",
 });
 
 export const metadata: Metadata = {
@@ -18,6 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <TopLoader />
       <body className={quicksand.className}>{children}</body>
     </html>
   );

@@ -149,3 +149,7 @@ a {
 html {
   background-color: black;
 }
+
+#nprogress .bar {
+  border: 2px solid black;
+}
