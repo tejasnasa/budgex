@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: rgb(255, 255, 255, 0.3);
+  padding: 5px;
+  font-weight: 500;
+  font-size: small;
+}
+
+.thing1 {
+  margin-right: 50px;
+}
+
+.thing2 {
+  margin-left: 50px;
+}
