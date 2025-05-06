@@ -1,10 +1,9 @@
 .container {
   color: #303030;
   border-radius: 32px;
-  padding: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 }
 
@@ -12,18 +11,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }
 
 .input {
-  background-color: transparent;
+  background-color: white;
   color: inherit;
   outline: none;
   border: 1px #bdbdbd solid;
   margin: 4px;
   margin-top: 2px;
   border-radius: 7px;
-  padding: 6px;
+  padding: 8px;
   width: 90%;
   font-family: inherit;
   font-weight: 500;
@@ -38,9 +40,9 @@
   border-radius: 4px;
   border: none;
   padding: 10px;
-  margin: 5px;
   width: 120px;
   font-size: 13px;
+  margin-top: 5px;
   font-family: inherit;
 }
 

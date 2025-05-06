@@ -67,6 +67,7 @@ export default async function Dashboard() {
             <List data={data} />
           </div>
           <div className={styles.block5}>
+            <span className={styles.heading1}>Create Income</span>
             <CreateIncomeForm />
           </div>
           <div className={styles.block6}>

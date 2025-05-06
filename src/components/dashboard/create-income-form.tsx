@@ -20,7 +20,6 @@ export default function CreateIncomeForm() {
 
   return (
     <div className={styles.container}>
-      <h4 className={styles.heading}>Add Income</h4>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <input
           className={styles.input}
