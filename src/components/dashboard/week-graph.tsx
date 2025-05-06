@@ -17,11 +17,11 @@ export default function WeekGraph({ data }: { data: ExpenseType[] }) {
   );
 
   return (
-    <ResponsiveContainer width="100%">
+    <ResponsiveContainer width="100%" height="100%">
       <BarChart
         data={formattedData}
-        margin={{ top: 0, bottom: 10, right: 20, left: 20 }}
-        barSize={12}
+        margin={{ top: 10, bottom: 20, right: 30, left: 30 }}
+        barSize={8}
       >
         <XAxis
           dataKey="name"

@@ -1,0 +1,16 @@
+.link {
+  color: #303030;
+  background-color: white;
+  width: min-content;
+  padding: 8px;
+  border-radius: 50px;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  border: 2px white solid;
+}
+
+.link:hover {
+  opacity: 0.8;
+  border: 1px #939393 solid;
+}

@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import LoginForm from "@/components/loginform";
 import { login } from "@/actions/auth";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function Login() {
   const [responseError, setResponseError] = useState<string | null>(null);
@@ -21,18 +22,9 @@ export default function Login() {
   });
 
   const onSubmit = async (values: z.infer<typeof loginSchema>) => {
-    try {
-      if (!values.email || !values.password) {
-        throw new Error("All fields are required.");
-      }
+    await login(values);
 
-      await login(values);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error(error.message);
-        setResponseError(error.message);
-      }
-    }
+    redirect("/dashboard");
   };
 
   return (

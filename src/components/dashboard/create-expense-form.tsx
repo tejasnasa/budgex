@@ -20,7 +20,6 @@ export default function CreateExpenseForm() {
 
   return (
     <div className={styles.container}>
-      <h4 className={styles.heading}>Create Expense</h4>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <input
           className={styles.input}

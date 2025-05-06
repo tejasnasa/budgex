@@ -49,23 +49,25 @@
 .block5,
 .block6 {
   display: grid;
-  background-color: rgb(255, 255, 255, 0.5);
+  background-color: rgb(255, 255, 255, 0.4);
+  aspect-ratio: 1;
   border-radius: 50px;
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .block1 {
   grid-column: 1 / span 1;
   grid-row: 1 / span 1;
   aspect-ratio: 1;
+  position: relative;
 }
 
 .heading1 {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 500;
   margin: 30px;
   margin-bottom: 10px;
+  margin-top: 40px;
   justify-content: space-between;
   display: flex;
 }
@@ -74,7 +76,7 @@
   font-size: 18px;
   color: rgb(28, 27, 27);
   font-weight: 400;
-  padding-right: 20px;
+  padding-right: 50px;
 }
 
 .block2 {
@@ -87,6 +89,7 @@
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
   aspect-ratio: 1;
+  position: relative;
 }
 
 .block4 {
@@ -97,11 +100,15 @@
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  position: relative;
 }
 
 .heading4 {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 500;
+  padding: 8px;
+  padding-left: 0;
+  padding-bottom: 0;
   margin: 20px;
 }
 
@@ -115,4 +122,5 @@
   grid-column: 2 / span 2;
   grid-row: 2 / span 1;
   aspect-ratio: 2;
+  position: relative;
 }

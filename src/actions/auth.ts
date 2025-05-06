@@ -68,8 +68,6 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
     }
 
     await createSession(user.id);
-
-    redirect("/dashboard");
   } catch (error: unknown) {
     if (error instanceof Error) {
       if (error.message === "Email doesn't exist.") {

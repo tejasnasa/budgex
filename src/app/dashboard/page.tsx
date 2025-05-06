@@ -10,6 +10,7 @@ import CreateExpenseForm from "@/components/dashboard/create-expense-form";
 import CreateIncomeForm from "@/components/dashboard/create-income-form";
 import { cookies } from "next/headers";
 import { decrypt } from "@/utils/sessions";
+import ArrowLink from "@/components/arrow-link";
 
 export default async function Dashboard() {
   const cookie = (await cookies()).get("session")?.value;
@@ -47,17 +48,21 @@ export default async function Dashboard() {
 
         <section className={styles.grid}>
           <div className={styles.block1}>
+            <ArrowLink url={"/expenses"} />
             <span className={styles.heading1}>Weekly Expenses</span>
             <WeekGraph data={data} />
           </div>
           <div className={styles.block2}>
+            <span className={styles.heading1}>Create Expense</span>
             <CreateExpenseForm />
           </div>
           <div className={styles.block3}>
+            <ArrowLink url={"/expenses"} />
             <span className={styles.heading1}>Weekly Distribution</span>
             <MonthPie data={data} />
           </div>
           <div className={styles.block4}>
+            <ArrowLink url={"/history"} />
             <span className={styles.heading4}>Expenses</span>
             <List data={data} />
           </div>
@@ -65,6 +70,7 @@ export default async function Dashboard() {
             <CreateIncomeForm />
           </div>
           <div className={styles.block6}>
+            <ArrowLink url={"/history"} />
             <span className={styles.heading1}>
               Monthly Distribution{" "}
               <span>

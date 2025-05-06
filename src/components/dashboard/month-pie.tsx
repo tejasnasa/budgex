@@ -16,7 +16,7 @@ export default function CategoryPieChart({ data }: { data: ExpenseType[] }) {
   };
 
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer height="100%">
       <PieChart>
         <Pie
           activeIndex={activeIndex}
