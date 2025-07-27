@@ -1,8 +1,7 @@
 .box,
 .hidden {
-  height: 200px;
+  height: 150px;
   width: 180px;
-  background-color: #f8f2e3;
   padding: 20px;
   position: absolute;
   right: 30;
@@ -12,6 +11,7 @@
   justify-content: space-between;
   border-radius: 10px;
   border: solid 1px #303030;
+  background-color: #5c5a5a50;
 }
 
 .button {

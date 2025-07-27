@@ -123,7 +123,7 @@ table {
   border-spacing: 0;
 }
 
-body {
+.mainbody1 {
   color: black;
   background: rgb(227, 229, 230);
   background: linear-gradient(
@@ -131,6 +131,13 @@ body {
     rgba(227, 229, 230, 1) 0%,
     rgba(252, 235, 182, 1) 81%
   );
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mainbody2 {
+  color: white;
+  background-color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -152,4 +159,9 @@ html {
 
 #nprogress .bar {
   border: 2px solid black;
+}
+
+[data-theme="dark"] [data-hide-on-theme="dark"],
+[data-theme="light"] [data-hide-on-theme="light"] {
+  display: none;
 }

@@ -3,6 +3,7 @@ import { Quicksand } from "next/font/google";
 import "./globals.css";
 import TopLoader from "@/components/top-loader";
 import Footer from "@/components/footer";
+import { ThemeProvider } from "next-themes";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
@@ -23,8 +24,16 @@ export default function RootLayout({
     <html lang="en">
       <TopLoader />
       <body className={quicksand.className}>
-        {children}
-        <Footer />
+        <ThemeProvider>
+          <div className="mainbody1" data-hide-on-theme="dark">
+            {children}
+            <Footer />
+          </div>
+          <div className="mainbody2" data-hide-on-theme="light">
+            {children}
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
