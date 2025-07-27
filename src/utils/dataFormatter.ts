@@ -81,24 +81,31 @@ export function formatMonthAreaData(data: ExpenseType[]) {
     [category: string]: string | number;
   }
 
+  const formatLocalDate = (d: Date) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  };
+
   const monthDates = [...Array(lastDay)].map((_, i) => {
     const date = new Date(year, month, i + 1);
     return {
-      date: date.toISOString().split("T")[0],
+      date: formatLocalDate(date),
       dayName: (i + 1).toString(),
     };
   });
 
   const groupedData: Record<string, DayExpense> = {};
-
   monthDates.forEach(({ date, dayName }) => {
     groupedData[date] = { name: dayName };
   });
 
   data.forEach(({ amount, date, category }) => {
-    const parsedDate = new Date(date);
-    parsedDate.setUTCHours(0, 0, 0, 0);
-    const formattedDate = parsedDate.toISOString().split("T")[0];
+    const d = new Date(date);
+    if (d.getFullYear() !== year || d.getMonth() !== month) return;
+
+    const formattedDate = formatLocalDate(d);
 
     if (groupedData[formattedDate]) {
       if (typeof groupedData[formattedDate][category.name] !== "number") {
@@ -107,6 +114,6 @@ export function formatMonthAreaData(data: ExpenseType[]) {
       (groupedData[formattedDate][category.name] as number) += amount;
     }
   });
-
+  
   return monthDates.map(({ date }) => groupedData[date]);
 }

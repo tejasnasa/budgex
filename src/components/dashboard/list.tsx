@@ -28,7 +28,7 @@ export default function List({ data }: { data: ExpenseType[] }) {
               <div>
                 <div className={styles.name}>{expense.name}</div>
                 <div className={styles.time}>
-                  {formatDateTime(expense.created_at)}
+                  {formatDateTime(expense.date)}
                 </div>
               </div>
             </div>

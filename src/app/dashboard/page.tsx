@@ -8,13 +8,16 @@ import MonthGraph from "@/components/dashboard/month-graph";
 import MonthPie from "@/components/dashboard/month-pie";
 import CreateExpenseForm from "@/components/dashboard/create-expense-form";
 import CreateIncomeForm from "@/components/dashboard/create-income-form";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { decrypt } from "@/utils/sessions";
 import ArrowLink from "@/components/arrow-link";
 
 export default async function Dashboard() {
   const cookie = (await cookies()).get("session")?.value;
   const session = (await decrypt(cookie)) as { userId?: string };
+  const headersList = await headers();
+  const userAgent = headersList.get("user-agent") || "";
+  const isMobile = /mobile/i.test(userAgent);
 
   const data = await prisma.expense.findMany({
     where: { userid: session.userId },
@@ -26,15 +29,35 @@ export default async function Dashboard() {
     },
   });
 
+  console.log(data);
+
   const userData = await prisma.user.findUnique({
     where: {
       id: session.userId,
     },
   });
 
+  const now = new Date();
+  const currentMonth = now.getMonth();
+  const currentYear = now.getFullYear();
+
+  const currentMonthExpenses = data.filter((expense) => {
+    const expenseDate = new Date(expense.date);
+    return (
+      expenseDate.getMonth() === currentMonth &&
+      expenseDate.getFullYear() === currentYear
+    );
+  });
+
+  const totalSpentThisMonth = currentMonthExpenses.reduce(
+    (sum, expense) => sum + expense.amount,
+    0
+  );
+
   return (
     <>
-      <Header name={userData?.username} />
+      {!isMobile && <Header name={userData?.username} />}
+
       <main className={styles.main}>
         <section className={styles.title}>
           <h2>Dashboard</h2>
@@ -73,10 +96,7 @@ export default async function Dashboard() {
           <div className={styles.block6}>
             <ArrowLink url={"/history"} />
             <span className={styles.heading1}>
-              Monthly Distribution{" "}
-              <span>
-                Spent: ₹{data.reduce((sum, expense) => sum + expense.amount, 0)}
-              </span>
+              Monthly Distribution <span>Spent: ₹{totalSpentThisMonth}</span>
             </span>
             <MonthGraph data={data} />
           </div>
