@@ -133,13 +133,7 @@ table {
   );
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.mainbody2 {
-  color: white;
-  background-color: black;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 * {
@@ -154,14 +148,9 @@ a {
 }
 
 html {
-  background-color: black;
+  background-color: white;
 }
 
 #nprogress .bar {
   border: 2px solid black;
-}
-
-[data-theme="dark"] [data-hide-on-theme="dark"],
-[data-theme="light"] [data-hide-on-theme="light"] {
-  display: none;
 }
