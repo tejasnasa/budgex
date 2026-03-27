@@ -3,7 +3,7 @@ import styles from "./loginform.module.css";
 import { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { useState } from "react";
 import { z } from "zod";
-import { Eye } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 type LoginFormProps = {
   onSubmit: SubmitHandler<z.infer<typeof loginSchema>>;
@@ -32,41 +32,50 @@ export default function LoginForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <label htmlFor="email" className={styles.label}>
-        Email
-      </label>
-      <input
-        type="text"
-        className={styles.input}
-        id="email"
-        {...register("email")}
-        placeholder="tejas@example.com"
-      />
-      <label htmlFor="password" className={styles.label}>
-        Password
-      </label>
-      <div className={styles.password}>
+      <div className={styles.field}>
+        <label htmlFor="email" className={styles.label}>
+          Email
+        </label>
         <input
+          type="text"
           className={styles.input}
-          id="password"
-          {...register("password")}
-          type={showPassword ? "text" : "password"}
+          id="email"
+          {...register("email")}
+          placeholder="tejas@example.com"
         />
-        <Eye
-          onClick={() => setShowPassword((val) => !val)}
-          className={styles.eye}
-        />
+        {errors.email && <div className={styles.fieldError}>{errors.email.message}</div>}
       </div>
+
+      <div className={styles.field}>
+        <label htmlFor="password" className={styles.label}>
+          Password
+        </label>
+        <div className={styles.password}>
+          <input
+            className={styles.input}
+            id="password"
+            {...register("password")}
+            type={showPassword ? "text" : "password"}
+            placeholder="••••••••"
+          />
+          <button 
+            type="button" 
+            className={styles.eyeBtn}
+            onClick={() => setShowPassword((val) => !val)}
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
+        {errors.password && <div className={styles.fieldError}>{errors.password.message}</div>}
+      </div>
+
       <button className={styles.submit}>Submit</button>
-      <div className={styles.error}>
-        {errors.email ? (
-          <p>{errors.email.message}</p>
-        ) : errors.password ? (
-          <p>{errors.password.message}</p>
-        ) : responseError ? (
+
+      {responseError && (
+        <div className={styles.error}>
           <p>{responseError}</p>
-        ) : null}
-      </div>
+        </div>
+      )}
     </form>
   );
 }

@@ -29,12 +29,14 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
-      <Link href="/">
-        <Image src={logo} alt="Budgex" height={56} className={styles.logo} />
-      </Link>
+      <header className={styles.header}>
+        <Link href="/">
+          <Image src={logo} alt="Budgex" height={48} width={48} className={styles.logo} />
+        </Link>
+      </header>
 
       <section className={styles.box}>
-        <h1 className={styles.heading}>Login</h1>
+        <h1 className={styles.heading}>Welcome <span className={styles.highlight}>Back</span></h1>
         <LoginForm
           form={form}
           onSubmit={onSubmit}
